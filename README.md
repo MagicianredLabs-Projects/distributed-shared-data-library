@@ -1,4 +1,4 @@
-# peer-shared-data
+# distributed-shared-data
 
 Sistema per condividere i dati da applicazioni diverse in maniera distribuita.
 
@@ -8,13 +8,35 @@ Realizzare un'infrastruttura di base (una sorta di standard) per distribuire del
 
 Che siano dati come post, prodotti, offerte di lavoro, ecc, c'è chi crea questi dati (source) e può condividerli (sia in push che in pull) verso altri sistemi che "aggregano" le informazioni. Questi aggregatori sono il core dell'applicativo, la base su cui si struttura la conoscenza.
 
-L'applicativo deve essere modulare (in modo da poter crescere nel tempo, ad esempio una start-up, oppure un singole che crea un blog) per poter crescere aggiungendo plug-in per avere più sorgenti dati esterni e più output e partendo dal solo producer di dati diventare un consumer/aggregatore.
+L'applicativo deve essere modulare (in modo da poter crescere nel tempo, ad esempio una start-up, oppure una persona che crea in autonomia un blog) per poter crescere aggiungendo plug-in per avere più sorgenti dati esterni e più output e partendo dal solo producer di dati diventare un consumer/aggregatore.
+
+## Casi d'uso
+
+### Blog Diffuso
+
+Una serie di blog interconnessi uno all'altro tranute webapi/restapi e RegistryArea per scambiarsi aggiornamenti reciproci, post, categorie, commenti, ecc.
+
+### CMS
+
+Una serie di CMS interconnessi per scambiarsi contenuti:
+- alcuni client potrebbero solo mandare contenuti preformattati
+- ci potrebbero essere una serie di frontend che ricevono solo i contenuti, li aggrega (secondo delle logiche) e li visualizza
+
+### E-commerce
+
+Una serie di e-commerce che si scambiano prodotti/ordini e potrebbero generare delle fatture fra di loro nel caso di vendite reciproche:
+- client che permettono di inviare i prodotti in vendita e ricevono gli ordini di quelli venduti
+- possibilità di avere un dato GEO per localizzare dove si trova un determinato prodotto
 
 ## Gli elementi del sistema
 
 ### Core/Aggregatore
 
 E' la base del sistema, ha in se il database (o file) che immagazzina le informazioni.
+Deve essere visto come un componente all'interno dell'applicativo (sia esso un blog/cms/ecommerce/ecc) che ha un sistema che permette due operazioni principali:
+
+- registry area: serve a registrare le operazioni che avvengono all'interno dell'applicazione salvandole nel database
+- staging area: serve a ricevere e registrare le operazioni che vengono da applicativi esterni, e permette poi di visualizzarli e importarli nell'applicazione
 
 #### Esempio
 
@@ -46,3 +68,13 @@ Può essere ad esempio un applicativo amministrativo che permette l'inserimento 
 
 
 
+## Esempi di implementazione
+
+### Implementazioni in dotnet
+
+- https://github.com/MagicianredLabs/dotnet-distributed-shared-data
+
+#### Alcuni siti che la implementano
+
+- https://github.com/Magicianred/magicianred-net-website
+- https://github.com/Magicianred/dotnet5-example-blog
