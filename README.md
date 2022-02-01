@@ -10,6 +10,10 @@ Che siano dati come post, prodotti, offerte di lavoro, ecc, c'è chi crea questi
 
 L'applicativo deve essere modulare (in modo da poter crescere nel tempo, ad esempio una start-up, oppure una persona che crea in autonomia un blog) per poter crescere aggiungendo plug-in per avere più sorgenti dati esterni e più output e partendo dal solo producer di dati diventare un consumer/aggregatore.
 
+## Entità Relazioni
+
+![Entità Relazioni](./Project/Diagrams/entity-relationship.png)
+
 ## Casi d'uso
 
 ### Blog Diffuso
@@ -29,6 +33,8 @@ Una serie di e-commerce che si scambiano prodotti/ordini e potrebbero generare d
 - possibilità di avere un dato GEO per localizzare dove si trova un determinato prodotto
 
 ## Gli elementi del sistema
+
+![Gli elementi del sistema](./Project/Diagrams/Core.png)
 
 ### Core/Aggregatore
 
@@ -69,6 +75,8 @@ Può essere ad esempio un applicativo amministrativo che permette l'inserimento 
 
 
 ## Esempi di implementazione
+
+![Gli elementi del sistema](./Project/Diagrams/Schema.png)
 
 ### Implementazioni in dotnet
 
